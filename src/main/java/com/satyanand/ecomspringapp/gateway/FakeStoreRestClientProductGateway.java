@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class FakeStoreProductGateway implements IProductGateway{
+public class FakeStoreRestClientProductGateway implements IProductGateway{
 
     private final RestClient restClient;
 
