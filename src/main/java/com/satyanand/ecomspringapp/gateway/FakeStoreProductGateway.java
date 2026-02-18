@@ -24,21 +24,36 @@ public class FakeStoreProductGateway implements IProductGateway{
 
     @Override
     public ProductDTO getProductById(Integer id) {
-        return null;
+        return restClient.get()
+                .uri("products/{id}", id)
+                .retrieve()
+                .body(ProductDTO.class);
     }
 
     @Override
     public ProductDTO createProduct(ProductDTO product) {
-        return null;
+        return restClient.post()
+                .uri("products")
+                .body(product)
+                .retrieve()
+                .body(ProductDTO.class);
     }
 
     @Override
     public ProductDTO updateProduct(Integer id, ProductDTO product) {
-        return null;
+        return restClient.put()
+                .uri("products/{id}", id)
+                .body(product)
+                .retrieve()
+                .body(ProductDTO.class);
     }
 
     @Override
     public void deleteProduct(Integer id) {
+        restClient.delete()
+                .uri("products/{id}", id)
+                .retrieve()
+                .toBodilessEntity();
 
     }
 }
