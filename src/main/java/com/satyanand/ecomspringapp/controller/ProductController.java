@@ -1,6 +1,7 @@
 package com.satyanand.ecomspringapp.controller;
 
-import com.satyanand.ecomspringapp.dto.ProductDTO;
+import com.satyanand.ecomspringapp.dto.request.ProductDTO;
+import com.satyanand.ecomspringapp.dto.response.ProductResponseDTO;
 import com.satyanand.ecomspringapp.service.IProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,29 +19,29 @@ public class ProductController {
 
     // Get all products
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        List<ProductDTO> products = productService.getAllProducts();
+    public ResponseEntity<List<ProductResponseDTO>> getAllProducts() {
+        List<ProductResponseDTO> products = productService.getAllProducts();
         return ResponseEntity.ok(products);
     }
 
     // Get a product by ID
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id) {
-        ProductDTO product = productService.getProductById(id);
+    public ResponseEntity<ProductResponseDTO> getProductById(@PathVariable Long id) {
+        ProductResponseDTO product = productService.getProductById(id);
         return ResponseEntity.ok(product);
     }
 
     // Create a new product
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO product) {
-        ProductDTO createdProduct = productService.createProduct(product);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductDTO product) {
+        ProductResponseDTO createdProduct = productService.createProduct(product);
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
     }
 
     // Update a product
     @PutMapping("/{id}")
-    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Integer id, @RequestBody ProductDTO product) {
-        ProductDTO updatedProduct = productService.updateProduct(id, product);
+    public ResponseEntity<ProductResponseDTO> updateProduct(@PathVariable Integer id, @RequestBody ProductDTO product) {
+        ProductResponseDTO updatedProduct = productService.updateProduct(id, product);
         return ResponseEntity.ok(updatedProduct);
     }
 

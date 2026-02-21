@@ -1,4 +1,4 @@
-package com.satyanand.ecomspringapp.dto;
+package com.satyanand.ecomspringapp.dto.response;
 
 import lombok.*;
 

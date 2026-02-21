@@ -1,14 +1,15 @@
 package com.satyanand.ecomspringapp.gateway;
 
-import com.satyanand.ecomspringapp.dto.ProductDTO;
+import com.satyanand.ecomspringapp.dto.request.ProductDTO;
+import com.satyanand.ecomspringapp.dto.response.ProductResponseDTO;
 
 import java.util.List;
 
 public interface IProductGateway {
 
-    List<ProductDTO> getAllProducts();
-    ProductDTO getProductById(Integer id);
-    ProductDTO createProduct(ProductDTO product);
-    ProductDTO updateProduct(Integer id, ProductDTO product);
+    List<ProductResponseDTO> getAllProducts();
+    ProductResponseDTO getProductById(Long id);
+    ProductResponseDTO createProduct(ProductDTO product);
+    ProductResponseDTO updateProduct(Integer id, ProductDTO product);
     void deleteProduct(Integer id);
 }

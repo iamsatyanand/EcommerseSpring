@@ -1,6 +1,7 @@
 package com.satyanand.ecomspringapp.gateway;
 
-import com.satyanand.ecomspringapp.dto.ProductDTO;
+import com.satyanand.ecomspringapp.dto.request.ProductDTO;
+import com.satyanand.ecomspringapp.dto.response.ProductResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class FakeStoreRestClientProductGateway implements IProductGateway{
     private final RestClient restClient;
 
     @Override
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         return restClient.get()
                 .uri("products")
                 .retrieve()
@@ -23,29 +24,29 @@ public class FakeStoreRestClientProductGateway implements IProductGateway{
     }
 
     @Override
-    public ProductDTO getProductById(Integer id) {
+    public ProductResponseDTO getProductById(Long id) {
         return restClient.get()
                 .uri("products/{id}", id)
                 .retrieve()
-                .body(ProductDTO.class);
+                .body(ProductResponseDTO.class);
     }
 
     @Override
-    public ProductDTO createProduct(ProductDTO product) {
+    public ProductResponseDTO createProduct(ProductDTO product) {
         return restClient.post()
                 .uri("products")
                 .body(product)
                 .retrieve()
-                .body(ProductDTO.class);
+                .body(ProductResponseDTO.class);
     }
 
     @Override
-    public ProductDTO updateProduct(Integer id, ProductDTO product) {
+    public ProductResponseDTO updateProduct(Integer id, ProductDTO product) {
         return restClient.put()
                 .uri("products/{id}", id)
                 .body(product)
                 .retrieve()
-                .body(ProductDTO.class);
+                .body(ProductResponseDTO.class);
     }
 
     @Override

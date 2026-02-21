@@ -1,12 +1,12 @@
 package com.satyanand.ecomspringapp.gateway;
 
-import com.satyanand.ecomspringapp.dto.CategoryDTO;
-import com.satyanand.ecomspringapp.dto.FakeStoreCategoryResponseDTO;
+import com.satyanand.ecomspringapp.dto.request.CategoryDTO;
+import com.satyanand.ecomspringapp.dto.response.CategoryResponseDTO;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface ICategoryGateway {
 
-    List<CategoryDTO> getAllCategories() throws IOException;
+    List<CategoryResponseDTO> getAllCategories() throws IOException;
 }

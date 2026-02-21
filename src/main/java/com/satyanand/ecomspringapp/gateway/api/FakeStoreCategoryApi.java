@@ -1,6 +1,6 @@
 package com.satyanand.ecomspringapp.gateway.api;
 
-import com.satyanand.ecomspringapp.dto.FakeStoreCategoryResponseDTO;
+import com.satyanand.ecomspringapp.dto.response.FakeStoreCategoryResponseDTO;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

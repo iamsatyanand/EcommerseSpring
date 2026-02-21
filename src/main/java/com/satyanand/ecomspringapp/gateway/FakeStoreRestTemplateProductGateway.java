@@ -1,10 +1,10 @@
 package com.satyanand.ecomspringapp.gateway;
 
-import com.satyanand.ecomspringapp.dto.ProductDTO;
+import com.satyanand.ecomspringapp.dto.request.ProductDTO;
+import com.satyanand.ecomspringapp.dto.response.ProductResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,26 +20,26 @@ public class FakeStoreRestTemplateProductGateway implements IProductGateway {
     private final RestTemplate restTemplate;
 
     @Override
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
 //        ResponseEntity<ProductDTO[]> response = restTemplate.getForEntity(baseUrl +"products", ProductDTO[].class);
 //        return response.getBody() != null ? List.of(response.getBody()) : List.of();
-        ProductDTO[] products = restTemplate.getForObject(baseUrl + "products", ProductDTO[].class);
+        ProductResponseDTO[] products = restTemplate.getForObject(baseUrl + "products", ProductResponseDTO[].class);
         return products != null ? List.of(products) : List.of();
     }
 
     @Override
-    public ProductDTO getProductById(Integer id) {
-        return restTemplate.getForObject(baseUrl+ "products/{id}", ProductDTO.class, id);
+    public ProductResponseDTO getProductById(Long id) {
+        return restTemplate.getForObject(baseUrl+ "products/{id}", ProductResponseDTO.class, id);
     }
 
     @Override
-    public ProductDTO createProduct(ProductDTO product) {
-        return restTemplate.patchForObject(baseUrl+ "products", product, ProductDTO.class);
+    public ProductResponseDTO createProduct(ProductDTO product) {
+        return restTemplate.patchForObject(baseUrl+ "products", product, ProductResponseDTO.class);
     }
 
     @Override
-    public ProductDTO updateProduct(Integer id, ProductDTO product) {
-        return restTemplate.patchForObject(baseUrl+ "products/{id}", product, ProductDTO.class, id);
+    public ProductResponseDTO updateProduct(Integer id, ProductDTO product) {
+        return restTemplate.patchForObject(baseUrl+ "products/{id}", product, ProductResponseDTO.class, id);
     }
 
     @Override
